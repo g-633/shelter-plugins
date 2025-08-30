@@ -89,7 +89,7 @@ function settings() {
     <${SwitchItem}
       value=${store.hideTags}
       onChange=${(v) => store.hideTags = v}
-      note="Hide clan/guild tags (chiplets) next to nicknames."
+      note="Hide guild tags next to nicknames."
     >Скрывать теги</${SwitchItem}>
 
     <${Divider} mt=${true} />
