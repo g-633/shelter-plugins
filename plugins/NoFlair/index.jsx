@@ -1,6 +1,6 @@
 // NoFlair — Nameplates & Tags + Solid color for gradient nicknames (JS)
 
-// ── i18n ─────────────────────────────────────────────────────────────────
+/* ── i18n ─────────────────────────────────────────────────────────────── */
 const LOCALES = {
   en: {
     header: "Nameplates & Tags & Gradient",
@@ -10,7 +10,7 @@ const LOCALES = {
     hideTags_note: "Hide guild tags next to nicknames.",
     roleSolidColor_title: "Solid color instead of gradient",
     roleSolidColor_note:
-      "Gradient nicknames/mentions become a single (average) color. All animations/hover effects are disabled.",
+      "Gradient nicknames/mentions become a single (average) color.",
     footer_note: "Changes are applied immediately, no restart required.",
   },
   ru: {
@@ -21,7 +21,7 @@ const LOCALES = {
     hideTags_note: "Скрывать гильдейские теги рядом с ником.",
     roleSolidColor_title: "Однородный цвет вместо градиента",
     roleSolidColor_note:
-      "Градиентные ники/упоминания становятся сплошным (средним) цветом. Анимации и hover-эффекты отключены.",
+      "Градиентные ники/упоминания становятся сплошным (средним) цветом.",
     footer_note: "Изменения применяются сразу, перезапуск не требуется.",
   },
 };
@@ -40,6 +40,7 @@ export function onLoad() {
     plugin: { store, scoped },
   } = shelter;
 
+  // migrate old keys
   if (store.hideInMembers !== undefined || store.hideInDMs !== undefined) {
     const prev = Boolean(store.hideInMembers ?? store.hideInDMs ?? true);
     if (store.hideNameplates === undefined) store.hideNameplates = prev;
@@ -159,7 +160,7 @@ li[class*="dm__"] [class*="closeButtonPlated"] { background: transparent !import
   };
   const rgbaToCss = ({ r, g, b, a }) => (a < 1 ? `rgba(${r}, ${g}, ${b}, ${+a.toFixed(3)})` : `rgb(${r}, ${g}, ${b})`);
 
-  const lastSig = new WeakMap();
+  let lastSig = new WeakMap();
   const queue = new Set();
   let scheduled = false;
   const CHUNK = 200;
@@ -245,7 +246,7 @@ li[class*="dm__"] [class*="closeButtonPlated"] { background: transparent !import
   }
 
   function cleanupSolid() {
-    lastSig.clear();
+    lastSig = new WeakMap();
     document.querySelectorAll(".srgc").forEach((el) => {
       el.classList.remove("srgc");
       undoHardKill(el);
