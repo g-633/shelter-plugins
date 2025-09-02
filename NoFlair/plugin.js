@@ -11,7 +11,7 @@ const LOCALES = {
 		hideTags_title: "Hide tags",
 		hideTags_note: "Hide guild tags next to nicknames.",
 		roleSolidColor_title: "Solid color instead of gradient",
-		roleSolidColor_note: "Gradient nicknames/mentions become a single (average) color. All animations/hover effects are disabled.",
+		roleSolidColor_note: "Gradient nicknames/mentions become a single (average) color.",
 		footer_note: "Changes are applied immediately, no restart required."
 	},
 	ru: {
@@ -21,7 +21,7 @@ const LOCALES = {
 		hideTags_title: "Скрывать теги",
 		hideTags_note: "Скрывать гильдейские теги рядом с ником.",
 		roleSolidColor_title: "Однородный цвет вместо градиента",
-		roleSolidColor_note: "Градиентные ники/упоминания становятся сплошным (средним) цветом. Анимации и hover-эффекты отключены.",
+		roleSolidColor_note: "Градиентные ники/упоминания становятся сплошным (средним) цветом.",
 		footer_note: "Изменения применяются сразу, перезапуск не требуется."
 	}
 };
@@ -157,7 +157,7 @@ li[class*="dm__"] [class*="closeButtonPlated"] { background: transparent !import
 		};
 	};
 	const rgbaToCss = ({ r, g, b, a }) => a < 1 ? `rgba(${r}, ${g}, ${b}, ${+a.toFixed(3)})` : `rgb(${r}, ${g}, ${b})`;
-	const lastSig = new WeakMap();
+	let lastSig = new WeakMap();
 	const queue = new Set();
 	let scheduled = false;
 	const CHUNK = 200;
@@ -231,7 +231,7 @@ li[class*="dm__"] [class*="closeButtonPlated"] { background: transparent !import
 else scheduled = false;
 	}
 	function cleanupSolid() {
-		lastSig.clear();
+		lastSig = new WeakMap();
 		document.querySelectorAll(".srgc").forEach((el) => {
 			el.classList.remove("srgc");
 			undoHardKill(el);
