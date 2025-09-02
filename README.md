@@ -8,7 +8,7 @@
   </span>
 </div>
 
-## tagplate-off
-plugin to toggle guild tags and nameplates
+## NoFlair
+plugin to toggle guild tags, nameplates and gradient roles
 
-`https://g-633.github.io/shelter-plugins/tagplate-off/`
+`https://g-633.github.io/shelter-plugins/NoFlair/`
