@@ -9,8 +9,7 @@
 </div>
 
 ## NoFlair
-plugin to toggle guild tags, nameplates and custom donat font.
-
-Плагин для скрытия гильд тегов, nameplates и донат шрифтов для ников.
+Plugin to toggle guild tags, nameplates and nitro name styles.
+Плагин для скрытия гильд тегов, nameplates и донатные стили ников.
 
 `https://g-633.github.io/shelter-plugins/NoFlair/`
