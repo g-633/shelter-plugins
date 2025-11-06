@@ -10,6 +10,6 @@
 
 ## NoFlair
 Plugin to toggle guild tags, nameplates and nitro name styles.
-Плагин для скрытия гильд тегов, nameplates и донатные стили ников.
+Плагин для скрытия гильд тегов, nameplates и донатных стилей ников.
 
 `https://g-633.github.io/shelter-plugins/NoFlair/`
